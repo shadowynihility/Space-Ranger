@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Information of Amateur Satellite</title>
+
+  <style>
+    :root {
+      --bg: #07111f;
+      --panel: #0d1b2e;
+      --panel-2: #12243d;
+      --text: #e8f0ff;
+      --muted: #9fb3d1;
+      --accent: #4fd1ff;
+      --accent-2: #7cffb2;
+      --warn: #ffd166;
+      --border: rgba(255, 255, 255, 0.12);
+      --shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans SC", sans-serif;
+      line-height: 1.65;
+      color: var(--text);
+      background:
+        radial-gradient(1200px 600px at 20% -10%, rgba(79, 209, 255, 0.20), transparent 60%),
+        radial-gradient(1000px 500px at 90% 0%, rgba(124, 255, 178, 0.12), transparent 55%),
+        var(--bg);
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: 0 auto;
+    }
+
+    .hero {
+      padding: 72px 0 36px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      color: var(--accent-2);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0.2em 0;
+      font-size: clamp(2rem, 5vw, 4rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+    }
+
+    h1 span {
+      display: block;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      max-width: 760px;
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .notice {
+      margin: 28px 0 0;
+      padding: 16px 18px;
+      border: 1px solid rgba(255, 209, 102, 0.28);
+      border-radius: 14px;
+      background: rgba(255, 209, 102, 0.08);
+      color: #ffe8a3;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 28px 0;
+    }
+
+    .card {
+      padding: 20px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: linear-gradient(180deg, var(--panel), var(--panel-2));
+      box-shadow: var(--shadow);
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      color: var(--accent-2);
+      font-size: 1.05rem;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .table-section {
+      margin: 44px 0;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+
+    .section-head h2,
+    .links h2 {
+      margin: 0;
+      font-size: clamp(1.35rem, 3vw, 1.8rem);
+    }
+
+    #search {
+      width: min(360px, 100%);
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      outline: none;
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    #search:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(79, 209, 255, 0.15);
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.03);
+      box-shadow: var(--shadow);
+    }
+
+    table {
+      width: 100%;
+      min-width: 860px;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      padding: 14px 12px;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid var(--border);
+    }
+
+    th {
+      color: var(--muted);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    tbody tr:hover td {
+      background: rgba(79, 209, 255, 0.05);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.18rem 0.55rem;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .badge.active {
+      color: var(--accent-2);
+      background: rgba(124, 255, 178, 0.12);
+      border-color: rgba(124, 255, 178, 0.30);
+    }
+
+    .badge.warn {
+      color: var(--warn);
+      background: rgba(255, 209, 102, 0.12);
+      border-color: rgba(255, 209, 102, 0.30);
+    }
+
+    .links {
+      margin: 44px 0;
+    }
+
+    .link-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .link-grid a {
+      display: block;
+      padding: 14px 16px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.04);
+      transition: 0.2s ease;
+    }
+
+    .link-grid a:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+      background: rgba(79, 209, 255, 0.08);
+      text-decoration: none;
+    }
+
+    footer {
+      margin-top: 48px;
+      padding: 28px 0 48px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 760px) {
+      .hero {
+        padding-top: 48px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      #search {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="hero">
+    <div class="container">
+      <p class="eyebrow">Amateur Radio · Satellite · Public Notes</p>
+      <h1>Information of <span>AMATEUR SATELLITE</span></h1>
+      <p class="subtitle">
+        A simple public page for amateur satellite frequencies, modes, status notes and tracking links.
+      </p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="notice">
+      <strong>提示：</strong>
+      下面的频率和状态是示例，可能随时间变化。操作前请以
+      <a href="https://www.amsat.org/status/" target="_blank" rel="noopener">AMSAT Satellite Status</a>
+      等官方或社区来源为准。
+    </section>
+
+    <section class="cards">
+      <article class="card">
+        <h3>What is an amateur satellite?</h3>
+        <p>
+          业余卫星通常由业余无线电爱好者、大学或相关组织发射/支持，用于语音、CW、数据、SSTV、APRS 等通信实验。
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Common modes</h3>
+        <p>
+          FM 语音、SSB/CW 线性转发器、APRS 数字中继、SSTV、Telemetry。FM 卫星通常需要设置 CTCSS 音调。
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Before you transmit</h3>
+        <p>
+          确认卫星状态、上行频率、音调、功率限制和当地法规。接收通常不需要许可，发射需要相应的业余无线电执照。
+        </p>
+      </article>
+    </section>
+
+    <section class="table-section">
+      <div class="section-head">
+        <h2>Common Amateur Satellites</h2>
+        <input id="search" type="search" placeholder="搜索卫星 / 频率 / 模式..." aria-label="搜索卫星" />
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>卫星</th>
+              <th>状态</th>
+              <th>上行</th>
+              <th>下行</th>
+              <th>模式 / 音调</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>ISS / ARISS</td>
+              <td><span class="badge active">活跃</span></td>
+              <td>145.990 MHz FM</td>
+              <td>145.800 MHz FM</td>
+              <td>FM 语音 / 67.0 Hz</td>
+              <td>活动时间不固定，关注 ARISS 计划。</td>
+            </tr>
+
+            <tr>
+              <td>SO-50</td>
+              <td><span class="badge active">活跃</span></td>
+              <td>145.850 MHz FM</td>
+              <td>436.795 MHz FM</td>
+              <td>FM 语音 / 67.0 Hz</td>
+              <td>经典 FM 卫星，适合入门。</td>
+            </tr>
+
+            <tr>
+              <td>AO-91 (Fox-1B)</td>
+              <td><span class="badge warn">需确认</span></td>
+              <td>435.250 MHz FM</td>
+              <td>145.960 MHz FM</td>
+              <td>FM 语音 / 67.0 Hz</td>
+              <td>状态可能变化，请查 AMSAT。</td>
+            </tr>
+
+            <tr>
+              <td>AO-92 (Fox-1D)</td>
+              <td><span class="badge warn">需确认</span></td>
+              <td>435.350 MHz FM</td>
+              <td>145.880 MHz FM</td>
+              <td>FM 语音 / 67.0 Hz</td>
+              <td>状态可能变化，请查 AMSAT。</td>
+            </tr>
+
+            <tr>
+              <td>RS-44</td>
+              <td><span class="badge active">活跃</span></td>
+              <td>145.935–145.995 MHz USB</td>
+              <td>435.610–435.670 MHz USB</td>
+              <td>SSB/CW 线性转发器</td>
+              <td>需要多普勒调谐。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="links">
+      <h2>Useful Links</h2>
+      <div class="link-grid">
+        <a href="https://www.amsat.org/" target="_blank" rel="noopener">AMSAT</a>
+        <a href="https://www.amsat.org/status/" target="_blank" rel="noopener">AMSAT Satellite Status</a>
+        <a href="https://www.ariss.org/" target="_blank" rel="noopener">ARISS</a>
+        <a href="https://www.n2yo.com/" target="_blank" rel="noopener">N2YO 卫星追踪</a>
+        <a href="https://heavens-above.com/" target="_blank" rel="noopener">Heavens-Above</a>
+        <a href="https://satnogs.org/" target="_blank" rel="noopener">SatNOGS</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>
+        Last updated: <span id="updated"></span> · 数据为示例，请以官方来源为准。
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("updated").textContent = new Date().toISOString().slice(0, 10);
+
+    const search = document.getElementById("search");
+    search.addEventListener("input", function () {
+      const q = this.value.trim().toLowerCase();
+
+      document.querySelectorAll("tbody tr").forEach(function (row) {
+        row.style.display = row.innerText.toLowerCase().includes(q) ? "" : "none";
+      });
+    });
+  </script>
+</body>
+</html>
