@@ -10,7 +10,6 @@
 • Antenna gain: 5 dBic, circular polarization
 • Cable loss: −3 dB
 • Transmit power: 40 dBm
-________________________________________
 At the maximum distance, the signal level reaching the satellite receiver is −107.1 dBm, which is above the satellite receiver sensitivity.
 (2) UHF Downlink Beacon Link:
 • Maximum distance (2329 km @ 5° elevation): path loss: −152.6 dB
@@ -24,7 +23,6 @@ At the maximum distance, the signal level reaching the satellite receiver is −
 • Polarization loss: −3 dB
 • Cable loss: −2 dB
 • Receiver sensitivity: −125 dBm
-________________________________________
 At the maximum distance, the signal level reaching the receiver is −122.6 dBm, which is above the receiver sensitivity.
 (3) UHF Downlink Transponder Link:
 • Maximum distance (2329 km @ 5° elevation): path loss: −152.6 dB
@@ -38,7 +36,6 @@ At the maximum distance, the signal level reaching the receiver is −122.6 dBm,
 • Polarization loss: −3 dB
 • Cable loss: −2 dB
 • Receiver sensitivity: −122 dBm
-________________________________________
 At the maximum distance, the signal level reaching the receiver is −118.6 dBm, which is above the receiver sensitivity.
 (4) 2.4 GHz Data Transmission Downlink:
 • Maximum distance (2329 km @ 5° elevation): path loss: −167.4 dB
@@ -52,5 +49,4 @@ At the maximum distance, the signal level reaching the receiver is −118.6 dBm,
 • Polarization loss: −3 dB
 • Cable loss: −2 dB
 • Receiver sensitivity: −95 dBm @ 10⁻⁴ BER
-________________________________________
 At the maximum distance, the signal level reaching the receiver is −93.7 dBm, which is above the receiver sensitivity.
