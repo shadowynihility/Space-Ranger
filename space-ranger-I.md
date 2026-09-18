@@ -1,37 +1,43 @@
-Space-Range1 Radio Link Budget Analysis
-20260604
+# Space Ranger I Radio Link Budget Analysis
 
+**Date:** 20260604
 
-●	VHF 1.2kbps BPSK Uplink:
-•	Maximum slant range (1719.54km @ 5 º ) path loss:	-140.43dB
-•	Minimum slant range (510 km@ 90 º) path loss:	-130.0dB
-•	Satellite receiver sensitivity:	-118dBm @ 10-5 BER
-•	Polarization:	-0.5 dB
-•	Ionosphere:	-3.5dB
-•Other loss:	-0.5dB
-•	Satellite antenna gain:	0dBi
+---
 
-●	Typical Earth Station:
-•	Antenna:	15dBic circular polarization Yagi antenna
-•	Cable loss:	-3dB
-•	Transmitting power:	47dBm
+## VHF 1.2 kbps BPSK Uplink
 
-Signal level at receiver input port is -113.07dBm at maximum slant range, it is much higher than the satellite receiver sensitivity.
+- **Maximum slant range** (1719.54 km @ 5°) path loss: **-140.43 dB**
+- **Minimum slant range** (510 km @ 90°) path loss: **-130.0 dB**
+- **Satellite receiver sensitivity:** **-118 dBm @ 10⁻⁵ BER**
+- **Polarization:** -0.5 dB
+- **Ionosphere:** -3.5 dB
+- **Other loss:** -0.5 dB
+- **Satellite antenna gain:** 0 dBi
 
+### Typical Earth Station
 
+- **Antenna:** 15 dBi circular polarization Yagi antenna
+- **Cable loss:** -3 dB
+- **Transmitting power:** 47 dBm
 
-●	UHF 4.096kbps BPSK Telemetry Downlink:
-•	Maximum slant range (1860.74km @ 5 º ) path loss:	-152.6dB
-•	Minimum slant range (510 km@ 90 º) path loss:	-139.2dB
-•	Satellite RF output:	27dBm
-•	Ionosphere:	-3.5dB
-•Other loss:	-0.5dB
-•	Satellite antenna gain:	-8.0dBi
+**Result:** Signal level at receiver input port is **-113.07 dBm** at maximum slant range. It is much higher than the satellite receiver sensitivity.
 
-●	Typical Earth Station:
-•	Antenna:	22dBi circular polarization Yagi antenna
-•	Polarization:	-3dB
-•	Cable loss:	-0.5dB (with LNA)
-•	Receiver sensitivity:	-117dBm @ 10-3 BER
+---
 
-Signal at receiver input port is -137.12dBm at maximum slant range. it is higher than the receiver sensitivity.
+## UHF 4.096 kbps BPSK Telemetry Downlink
+
+- **Maximum slant range** (1860.74 km @ 5°) path loss: **-152.6 dB**
+- **Minimum slant range** (510 km @ 90°) path loss: **-139.2 dB**
+- **Satellite RF output:** 27 dBm
+- **Ionosphere:** -3.5 dB
+- **Other loss:** -0.5 dB
+- **Satellite antenna gain:** -8.0 dBi
+
+### Typical Earth Station
+
+- **Antenna:** 22 dBi circular polarization Yagi antenna
+- **Polarization:** -3 dB
+- **Cable loss:** -0.5 dB (with LNA)
+- **Receiver sensitivity:** **-117 dBm @ 10⁻³ BER**
+
+**Result:** Signal at receiver input port is **-137.12 dBm** at maximum slant range. It is higher than the receiver sensitivity.
